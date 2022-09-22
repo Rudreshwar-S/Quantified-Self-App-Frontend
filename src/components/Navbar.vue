@@ -36,8 +36,17 @@
             label: "Trackers",
           },
           {
-            label: "Logout"
-          }
+            label: "Dashboard",
+            to: '/'
+          },
+          {
+            label: "About",
+            to: "/about"
+          },
+          {
+            label: "Logout",
+            to: "/registration"
+          },
         ],
       };
     },
@@ -57,13 +66,15 @@
     </template>
   </Menubar>
   <div class="text-centerr">
-    <Card v-if="displayTracker" ></Card>
+    <Card v-if="displayTracker"></Card>
   </div>
 </template>
 <style>
-  /* .text-centerr{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  } */
+  .text-centerr{
+    /* float:right; */
+    /* justify-content: center; */
+    left: 40%;
+    position: absolute;
+    z-index: 2;
+  }
 </style>

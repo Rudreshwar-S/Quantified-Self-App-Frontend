@@ -24,7 +24,7 @@
         </template>
         <template #footer>
             <Button icon="pi pi-check" label="Save" />
-            <Button icon="pi pi-times" label="Cancel" class="p-button-secondary" style="margin-left: .5em" />
+            <Button icon="pi pi-times" label="Cancel" class="p-button-secondary" style="margin-left: .5em"/>
         </template>
     </Card>
     <!-- <Card2 /> -->
@@ -32,11 +32,11 @@
 
 <style>
     .setting-loc {
-        position: fixed;
+        position: absolute;
         margin-left: 11em;
     }
     .card{
-        padding:10px;
+        padding: 15px;
         margin: 80px auto;
         /* border-radius: 100px; */
     }

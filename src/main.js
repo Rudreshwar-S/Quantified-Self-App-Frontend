@@ -10,21 +10,15 @@ import Textarea from 'primevue/textarea';
 import SpeedDial from 'primevue/speeddial';
 import Dialog from 'primevue/dialog'
 import Carousel from 'primevue/carousel';
+import Checkbox from 'primevue/checkbox';
+import Password from 'primevue/password';
+import Divider from 'primevue/divider';
+import router from './router'
 import 'primevue/resources/themes/bootstrap4-dark-blue/theme.css'     //theme
 import 'primevue/resources/primevue.min.css'                 //core css
 import 'primeicons/primeicons.css'    
 import './style.css'
-const app = createApp(App,
-    {
-        data(){
-            return{
-                lst : [1,2,3]
-            }
-        },
-        methods: {
-
-        }
-    });
+const app = createApp(App);
 // app.config.globalProperties.displayTracker = "123";
 app.use(PrimeVue);
 app.component('Button', Button);
@@ -36,4 +30,8 @@ app.component('Textarea', Textarea);
 app.component('SpeedDial', SpeedDial);
 app.component('Dialog', Dialog);
 app.component('Carousel', Carousel);
-app.mount('#app')
+app.component('Checkbox', Checkbox);
+app.component('Password', Password);
+app.component('Divider', Divider)
+// app.mount('#app')
+app.use(router).mount('#app')
