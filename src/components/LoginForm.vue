@@ -7,39 +7,16 @@
       position="top"
     >
       <div class="flex align-items-center flex-column pt-6 px-3">
-        <h5>Registration Failed!</h5>
+        <h5>Login Failed!</h5>
         <h5>Error: {{errorMessage}}</h5>
       </div>
     </Dialog>
-
     <div class="flex justify-content-center">
       <div class="card">
-        <h3>Register</h3>
+        <h3>Login</h3>
         <form @submit.prevent="handleSubmit(!v$.$invalid)" class="p-fluid">
           <div class="field">
-            <div class="p-float-label">
-              <InputText
-                id="name"
-                v-model="v$.name.$model"
-                :class="{ 'p-invalid': v$.name.$invalid && submitted }"
-              />
-              <label
-                for="name"
-                :class="{ 'p-error': v$.name.$invalid && submitted }"
-                >Name*</label
-              >
-            </div>
-            <small
-              v-if="
-                (v$.name.$invalid && submitted) || v$.name.$pending.$response
-              "
-              class="p-error"
-              >{{ v$.name.required.$message.replace("Value", "Name") }}</small
-            >
-          </div>
-          <div class="field">
             <div class="p-float-label p-input-icon-right">
-              <i class="pi pi-envelope" />
               <InputText
                 id="email"
                 v-model="v$.email.$model"
@@ -77,26 +54,13 @@
                 :class="{ 'p-invalid': v$.password.$invalid && submitted }"
                 toggleMask
               >
-                <template #header>
-                  <h6>Pick a password</h6>
-                </template>
-                <template #footer="sp">
-                  <p class="mt-2">Suggestions</p>
-                  <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-                    <li>At least one lowercase</li>
-                    <li>At least one uppercase</li>
-                    <li>At least one numeric</li>
-                    <li>Minimum 8 characters</li>
-                  </ul>
-                </template>
               </Password>
               <label
                 for="password"
                 :class="{ 'p-error': v$.password.$invalid && submitted }"
                 >Password*</label
               >
-            </div>
-            <small
+              <small
               v-if="
                 (v$.password.$invalid && submitted) ||
                 v$.password.$pending.$response
@@ -106,23 +70,10 @@
                 v$.password.required.$message.replace("Value", "Password")
               }}</small
             >
-          </div>
-          <div class="field-checkbox">
-            <Checkbox
-              id="accept"
-              name="accept"
-              value="Accept"
-              v-model="v$.accept.$model"
-              :class="{ 'p-invalid': v$.accept.$invalid && submitted }"
-            />
-            <label
-              for="accept"
-              :class="{ 'p-error': v$.accept.$invalid && submitted }"
-              > I agree to the terms and conditions*</label
-            >
+            </div>
           </div>
           <div class="padd">
-              <Button type="submit" label="Submit"/>
+            <Button type="submit" label="Login" />
           </div>
         </form>
       </div>
@@ -137,7 +88,6 @@ export default {
   setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
-      name: "",
       email: "",
       password: "",
       accept: null,
@@ -148,23 +98,18 @@ export default {
   },
   validations() {
     return {
-      name: {
-        required,
-      },
       email: {
         required,
         email,
       },
       password: {
         required,
-      },
-      accept: {
-        required,
-      },
+      }
     };
   },
   methods: {
     handleSubmit(isFormValid) {
+      console.log(isFormValid, this.submitted)
       this.submitted = true;
 
       if (!isFormValid) {
@@ -172,12 +117,11 @@ export default {
       }
 
       let data = {
-        name: this.name,
         email: this.email,
         password: this.password,
       }
 
-      fetch("http://localhost:5000/auth/register", {
+      fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -187,17 +131,18 @@ export default {
       })
       .then(async res => {
         let data = await res.json()
+
         if(!res.ok){
           console.log(data)
           this.errorMessage = (data && data.message) || res.status;
           this.toggleDialog()
-          // return Promise.reject(error);
         }else{
-          this.$router.push('/dashboard');
           let jwt = data.jwt
           localStorage.setItem('Auth', jwt)
+          this.$router.push('/dashboard')
         }
       })
+
     },
     toggleDialog() {
       this.showMessage = !this.showMessage;
@@ -206,7 +151,6 @@ export default {
       }
     },
     resetForm() {
-      this.name = "";
       this.email = "";
       this.password = "";
       this.accept = null;
@@ -232,7 +176,7 @@ export default {
   .card {
     width: 30%;
   }
-  .padd{
+  .padd {
     padding-top: 10%;
   }
 }

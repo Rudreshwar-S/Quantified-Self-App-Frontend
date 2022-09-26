@@ -14,11 +14,18 @@ import Checkbox from 'primevue/checkbox';
 import Password from 'primevue/password';
 import Divider from 'primevue/divider';
 import router from './router'
-import 'primevue/resources/themes/bootstrap4-dark-blue/theme.css'     //theme
+import 'primevue/resources/themes/bootstrap4-dark-purple/theme.css'     //theme
 import 'primevue/resources/primevue.min.css'                 //core css
 import 'primeicons/primeicons.css'    
 import './style.css'
-const app = createApp(App);
+const app = createApp(
+    App,
+    // {
+    //     provide: {
+    //         displayTracker: false
+    //     }
+    // }
+    );
 // app.config.globalProperties.displayTracker = "123";
 app.use(PrimeVue);
 app.component('Button', Button);
@@ -32,6 +39,7 @@ app.component('Dialog', Dialog);
 app.component('Carousel', Carousel);
 app.component('Checkbox', Checkbox);
 app.component('Password', Password);
-app.component('Divider', Divider)
+app.component('Divider', Divider);
+// app.provide('myGlobalVariable', displayTracker)
 // app.mount('#app')
 app.use(router).mount('#app')

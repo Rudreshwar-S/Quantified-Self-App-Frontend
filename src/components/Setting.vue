@@ -53,7 +53,7 @@ export default {
 </script>
 <style>
     .p-speeddial-button.p-button.p-button-icon-only span.pi.pi-cog.p-button-icon{
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     .p-button.p-component.p-button-icon-only.p-speeddial-button.p-button-rounded.p-speeddial-rotate{
         width: 2rem;

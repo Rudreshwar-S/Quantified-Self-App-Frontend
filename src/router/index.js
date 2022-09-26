@@ -1,15 +1,20 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
 import About from '../views/About.vue'
-import Registration from '../views/Login.vue'
+import Login from '../views/Login.vue'
+import Registration from '../views/SignUp.vue'
 
 // 2. Define some routes
 // Each route should map to a component.
 // We'll talk about nested routes later.
 const routes = [
   { path: '/', component: Home },
+  { path: '/dashboard', component: Dashboard },
   { path: '/about', component: About },
-  { path: '/registration', component: Registration}
+  { path: '/registration', component: Registration},
+  { path: '/Login', component: Login},
+  
 ]
 
 // 3. Create the router instance and pass the `routes` option

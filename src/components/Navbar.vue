@@ -1,16 +1,15 @@
 <script>
-  import Card from './Card.vue';
+  import AddTracker from './AddTracker.vue';
   export default {
       components: {
-        Card
+        AddTracker
       },
     data() {
       return {
         displayTracker: false,
-        // displayTracker,
         items: [
           {
-            label: "File",
+            label: "Tracker",
             items: [
               {
                 label: "New",
@@ -33,11 +32,8 @@
             ],
           },
           {
-            label: "Trackers",
-          },
-          {
             label: "Dashboard",
-            to: '/'
+            to: '/dashboard'
           },
           {
             label: "About",
@@ -45,7 +41,9 @@
           },
           {
             label: "Logout",
-            to: "/registration"
+            command: () => {
+                  this.handleLogout()
+                }
           },
         ],
       };
@@ -54,6 +52,10 @@
     methods: {
       toggleFile: function() {
         this.displayTracker = !this.displayTracker
+      },
+      handleLogout: function(){
+        localStorage.removeItem("Auth")
+        this.$router.push('/')
       }
     }
   };
@@ -66,15 +68,8 @@
     </template>
   </Menubar>
   <div class="text-centerr">
-    <Card v-if="displayTracker"></Card>
+    <AddTracker v-if="displayTracker"></AddTracker>
   </div>
 </template>
 <style>
-  .text-centerr{
-    /* float:right; */
-    /* justify-content: center; */
-    left: 40%;
-    position: absolute;
-    z-index: 2;
-  }
 </style>
