@@ -52,7 +52,6 @@
                 }
                 else{
                     var authToken = localStorage.getItem("Auth");
-                    console.log("authToken: ",authToken)
                     fetch("http://localhost:5000/trackers", {
                     method: "POST",
                     headers: {
