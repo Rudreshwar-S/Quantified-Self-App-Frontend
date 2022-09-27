@@ -1,6 +1,10 @@
 <template>
-  <Button label="Export" icon="pi pi-download" @click="toggleFile"/>
-  <Button label="Export" icon="pi pi-download" />
+  <div class="add-btn">
+    <Button label="Add Tracker" icon="pi pi-download" @click="toggleFile"/>
+  </div>
+  <div class="export-btn">
+    <Button label="Export" icon="pi pi-download" />
+  </div>
   <AddCard v-if="displayCard"></AddCard>
   <DailyLogTrackers :cards="cards"></DailyLogTrackers>
 </template>
@@ -41,3 +45,12 @@ export default {
   },
 };
 </script>
+<style>
+  .add-btn{
+    margin-top: 1rem;
+  }
+  .export-btn{
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+</style>
