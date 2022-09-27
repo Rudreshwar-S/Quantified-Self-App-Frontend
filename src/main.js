@@ -18,15 +18,7 @@ import 'primevue/resources/themes/bootstrap4-dark-purple/theme.css'     //theme
 import 'primevue/resources/primevue.min.css'                 //core css
 import 'primeicons/primeicons.css'    
 import './style.css'
-const app = createApp(
-    App,
-    // {
-    //     provide: {
-    //         displayTracker: false
-    //     }
-    // }
-    );
-// app.config.globalProperties.displayTracker = "123";
+const app = createApp(App);
 app.use(PrimeVue);
 app.component('Button', Button);
 app.component('Dropdown', Dropdown);
@@ -40,6 +32,4 @@ app.component('Carousel', Carousel);
 app.component('Checkbox', Checkbox);
 app.component('Password', Password);
 app.component('Divider', Divider);
-// app.provide('myGlobalVariable', displayTracker)
-// app.mount('#app')
 app.use(router).mount('#app')

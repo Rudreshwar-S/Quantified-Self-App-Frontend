@@ -11,7 +11,7 @@
         <h5>Error: {{errorMessage}}</h5>
       </div>
     </Dialog>
-    <div class="flex justify-content-center">
+    <div class="login_div">
       <div class="card">
         <h3>Login</h3>
         <form @submit.prevent="handleSubmit(!v$.$invalid)" class="p-fluid">
@@ -50,6 +50,7 @@
             <div class="p-float-label">
               <Password
                 id="password"
+                :feedback="false"
                 v-model="v$.password.$model"
                 :class="{ 'p-invalid': v$.password.$invalid && submitted }"
                 toggleMask
@@ -161,6 +162,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .login_div{
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+  }
 .form-demo {
   .card {
     min-width: 200px;
@@ -174,7 +180,7 @@ export default {
     }
   }
   .card {
-    width: 30%;
+    width: 20%;
   }
   .padd {
     padding-top: 10%;

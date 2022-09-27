@@ -4,13 +4,12 @@
             <Card style="width: 17rem;">
                 <template #title>
                     <!-- <Setting class="setting-loc" :radius="100" direction="down-left" type="quarter-circle" showIcon="pi pi-cog "/> -->
-                    Tracker Details
+                    Card Details
                 </template>
                 <template #content>
-                    <h3>Tracker ID:</h3>
-                    <InputText placeholder="Name" style="margin-bottom: 0.8em" v-model="trackerName"></InputText>
-                    <Textarea placeholder="Description" style="margin-bottom: 0.8em;" v-model="description" rows="4" cols="22">x``</Textarea>
-                    <Dropdown  style="margin-bottom: 0.8em" v-model="trackerType"/>
+                    <h3>Tracker ID: {{this.$route.params.id}}</h3>
+                    <InputText placeholder="Value" style="margin-bottom: 0.8em" v-model="cardValue"></InputText>
+                    <Textarea placeholder="Note" style="margin-bottom: 0.8em;" v-model="note" rows="4" cols="22">x``</Textarea>
                 </template>
                 <template #footer>
                     <Button icon="pi pi-check" type="submit" label="Save" @click="onSubmit"/>
@@ -21,38 +20,29 @@
     </div>
 </template>
 <script>
-    import { required } from "@vuelidate/validators";
-    import { useVuelidate } from "@vuelidate/core";
-    import { inject } from 'vue';
-    import Dropdown from './Dropdown.vue';
     export default {
-        // inject:['displayTracker'],
-        components:{
-            Dropdown,
-        },
         data() {
             return{
-                trackerId: '',
-                trackerName: '',
-                description: '',
-                trackerType: null,
+                cardValue: '',
+                note: '',
                 isValidTracker: false,
                 displayDiv: true,
             }
         },
         methods: {
             onSubmit(){
+                var timeStamp = new Date().getTime();
                 let data = {
-                    name: this.trackerName,
-                    description: this.description,
-                    tracker_type: this.trackerType.name
+                    time_stamp: timeStamp,
+                    value: this.cardValue,
+                    note: this.note,
                 }
-                if(!this.description || !this.trackerName || this.trackerType==null){
+                if(!this.note || !this.cardValue){
                     alert("All fields required!")
                 }
                 else{
                     var authToken = localStorage.getItem("Auth");
-                    fetch("http://localhost:5000/trackers", {
+                    fetch("http://localhost:5000/tracker/"+this.$route.params.id, {
                     method: "POST",
                     headers: {
                     'Content-Type': 'application/json',
@@ -63,7 +53,7 @@
                 })
                 }
                 this.displayDiv=false
-                window.setTimeout(function(){location.reload()},1000)
+                // window.setTimeout(function(){location.reload()},1000)
             },
             onCancel(){
                 this.displayDiv=false

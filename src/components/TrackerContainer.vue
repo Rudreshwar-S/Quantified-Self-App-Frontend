@@ -6,17 +6,17 @@
           <h2>Your Trackers</h2>
         </template>
         <template #item="slotProps">
-          <div class="product-item">
-            <div class="product-item-content">
+          <div class="Tracker-item">
+            <div class="Tracker-item-content">
                 <div class="mb-3">
-                    <img src="../assets/tracker_gnda_logo.svg" style="width:8rem" :alt="slotProps.data.name" class="product-image" />
+                    <img src="../assets/tracker_gnda_logo.svg" style="height:7rem" :alt="slotProps.data.name" class="Tracker-image" />
                 </div>
                 <div>
-                    <h4 class="mb-1">{{slotProps.data.name}}</h4>
+                    <h3 class="mb-1">{{slotProps.data.name}}</h3>
                     <div class="car-buttons mt-5">
                         <Button icon="pi pi-pencil" class="p-button-success p-button-rounded mr-2"/>
-                        <Button icon="pi pi-trash" class="p-button-danger p-button-rounded mr-2" />
-                        <Button icon="pi pi-download" class="p-button-help p-button-rounded" />
+                        <Button icon="pi pi-trash" class="p-button-danger p-button-rounded mr-2" @click="deleteTracker(slotProps.data.id)"/>
+                        <Button icon="pi pi-info-circle" class="p-button-help p-button-rounded" />
                     </div>
                 </div>
             </div>
@@ -30,31 +30,7 @@
 </template>
 <script>
   let Trackers = [];
-  (async function fetch_trackers(){
-      var authToken = localStorage.getItem("Auth");
-      let data1 = await fetch("http://localhost:5000/trackers", {
-            method: "GET",
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
-              'Authorization': authToken
-            }, 
-          })
-          .then((data) => data.json())
-          .then((responseJSON) => {
-            return responseJSON
-    })
-    localStorage.setItem('Tracks', JSON.stringify(data1))
-    })()
-    var getTrackers = JSON.parse(localStorage.getItem('Tracks'))
-    console.log(getTrackers["0"].name)
-    for(var i in getTrackers){
-      Trackers.push({name: getTrackers[i].name})
-    }
-    console.log(Trackers)
   export default {
-    components: {
-    },
     data() {
       return {
         Trackers,
@@ -83,6 +59,37 @@
     };
   },
   methods: {
+    deleteTracker(id){
+      let data = {
+        "id": id
+      }
+      var authToken = localStorage.getItem("Auth");
+      fetch("http://localhost:5000/trackers", {
+            method: "DELETE",
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              'Authorization': authToken
+            },
+            body: JSON.stringify(data) 
+          })
+          window.setTimeout(function(){location.reload()},1000)
+    }
+  },
+  beforeMount(){
+      var authToken = localStorage.getItem("Auth");
+      fetch("http://localhost:5000/trackers", {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+              'Authorization': authToken
+            }, 
+          })
+          .then((data) => data.json())
+          .then((trakers) => {
+            this.Trackers = trakers
+          })
   }
 };
 </script>

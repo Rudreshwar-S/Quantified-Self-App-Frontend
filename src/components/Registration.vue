@@ -12,7 +12,7 @@
       </div>
     </Dialog>
 
-    <div class="flex justify-content-center">
+    <div class="registration_div">
       <div class="card">
         <h3>Register</h3>
         <form @submit.prevent="handleSubmit(!v$.$invalid)" class="p-fluid">
@@ -217,6 +217,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .registration_div{
+    display: flex;
+    justify-content: center;
+    margin-top: 8rem;
+  }
 .form-demo {
   .card {
     min-width: 200px;

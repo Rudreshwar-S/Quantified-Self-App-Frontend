@@ -55,6 +55,7 @@
       },
       handleLogout: function(){
         localStorage.removeItem("Auth")
+        localStorage.removeItem("Tracks")
         this.$router.push('/')
       }
     }

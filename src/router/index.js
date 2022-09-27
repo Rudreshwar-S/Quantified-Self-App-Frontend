@@ -4,6 +4,7 @@ import Dashboard from '../views/Dashboard.vue'
 import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import Registration from '../views/SignUp.vue'
+import TrackerLog from '../views/TrackerLog.vue'
 
 // 2. Define some routes
 // Each route should map to a component.
@@ -14,6 +15,7 @@ const routes = [
   { path: '/about', component: About },
   { path: '/registration', component: Registration},
   { path: '/Login', component: Login},
+  {path: '/dashboard/:id', component: TrackerLog},
   
 ]
 
