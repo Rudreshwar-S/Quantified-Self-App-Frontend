@@ -19,12 +19,15 @@ export default {
 <template>
   <div class="backdrop">
     <Navbar />
-    <TrackerContainer />
+    <TrackerContainer class="container"/>
   </div>
 </template>
 
 <style scoped>
 .Navbar {
   background-color: rgb(220, 228, 234);
+}
+.container{
+  margin-top: 5rem;
 }
 </style>

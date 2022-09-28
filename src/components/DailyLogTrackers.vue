@@ -3,7 +3,7 @@
       <div class="card">
         <Carousel :value="cards" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions">
           <template #header>
-            <h2>Your Tracker Logs</h2>
+            <h2 class="text-pos">Daily Logs</h2>
           </template>
           <template #item="slotProps">
             <div class="product-item">
@@ -79,3 +79,8 @@
     }
   };
   </script>
+  <style>
+    .text-pos{
+    text-align: center;
+  }
+  </style>

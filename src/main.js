@@ -13,6 +13,8 @@ import Carousel from 'primevue/carousel';
 import Checkbox from 'primevue/checkbox';
 import Password from 'primevue/password';
 import Divider from 'primevue/divider';
+import Chart from 'primevue/chart';
+import InputNumber from 'primevue/inputnumber'
 import router from './router'
 import 'primevue/resources/themes/bootstrap4-dark-purple/theme.css'     //theme
 import 'primevue/resources/primevue.min.css'                 //core css
@@ -32,4 +34,7 @@ app.component('Carousel', Carousel);
 app.component('Checkbox', Checkbox);
 app.component('Password', Password);
 app.component('Divider', Divider);
+app.component('Chart', Chart);
+app.component('InputNumber', InputNumber);
+
 app.use(router).mount('#app')

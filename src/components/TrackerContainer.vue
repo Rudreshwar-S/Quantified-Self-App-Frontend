@@ -1,14 +1,13 @@
 <template>
-  <div>
     <div class="card">
-      <Carousel :value="Trackers" :numVisible="3" :numScroll="3" :responsiveOptions="responsiveOptions">
+      <Carousel :value="Trackers" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" :circular="true">
         <template #header>
-          <h2>Your Trackers</h2>
+          <h2 class="text-pos">Your Trackers</h2>
         </template>
         <template #item="slotProps">
           <div class="Tracker-item">
             <div class="Tracker-item-content">
-                <div class="mb-3">
+                <div class="mb-3" @click="gotoCard(slotProps.data.id)">
                     <img src="../assets/tracker_gnda_logo.svg" style="height:7rem" :alt="slotProps.data.name" class="Tracker-image" />
                 </div>
                 <div>
@@ -22,11 +21,8 @@
             </div>
           </div>
         </template>
-        <template #footer>
-        </template>
       </Carousel>
     </div>
-  </div>
 </template>
 <script>
   let Trackers = [];
@@ -59,6 +55,9 @@
     };
   },
   methods: {
+    gotoCard(id){
+      this.$router.push('/dashboard/'+id)
+    },
     deleteTracker(id){
       let data = {
         "id": id
@@ -93,3 +92,9 @@
   }
 };
 </script>
+<style lang="scss" scoped>
+  .text-pos{
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+</style>

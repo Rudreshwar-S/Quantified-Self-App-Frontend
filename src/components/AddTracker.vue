@@ -7,7 +7,6 @@
                     Tracker Details
                 </template>
                 <template #content>
-                    <h3>Tracker ID:</h3>
                     <InputText placeholder="Name" style="margin-bottom: 0.8em" v-model="trackerName"></InputText>
                     <Textarea placeholder="Description" style="margin-bottom: 0.8em;" v-model="description" rows="4" cols="22">x``</Textarea>
                     <Dropdown  style="margin-bottom: 0.8em" v-model="trackerType"/>
@@ -21,12 +20,8 @@
     </div>
 </template>
 <script>
-    import { required } from "@vuelidate/validators";
-    import { useVuelidate } from "@vuelidate/core";
-    import { inject } from 'vue';
     import Dropdown from './Dropdown.vue';
     export default {
-        // inject:['displayTracker'],
         components:{
             Dropdown,
         },
@@ -71,7 +66,6 @@
         }
     };
 </script>
-
 <style scoped>
     .parent_div{
         position: fixed;
