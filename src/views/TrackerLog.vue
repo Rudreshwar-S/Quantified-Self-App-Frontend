@@ -3,14 +3,15 @@
   <div class="export-btn">
     <Button label="Graph" icon="pi pi-chart-line" @click="toggleChart" />
   </div>
-  <Chart
-    type="line"
-    :data="lineData"
-    :options="lineOptions"
-    v-if="displayLine"
-  />
-  <div >
-    <Chart type="pie" :data="pieData" :options="pieOptions" v-if="displayPie" class="chart_fix"/>
+  <div>
+    <Chart
+      type="line"
+      :data="lineData"
+      :options="lineOptions"
+      v-if="displayLine"
+      class="chart_fix"
+    />
+    <Chart type="pie" :data="pieData" :options="pieOptions" v-if="displayPie" class="chart_fix2"/>
   </div>
   <ContainCard :cards="cards"></ContainCard>
 </template>
@@ -48,8 +49,8 @@ export default {
         datasets: [
           {
             data: [],
-            backgroundColor: ["#42A5F5", "#66BB6A", "#FFA726"],
-            hoverBackgroundColor: ["#64B5F6", "#81C784", "#FFB74D"],
+            backgroundColor: ["#42A5F5", "#FFA726"],
+            hoverBackgroundColor: ["#64B5F6", "#FFB74D"],
           },
         ],
       },
@@ -84,7 +85,7 @@ export default {
         plugins: {
           legend: {
             labels: {
-              color: "#495057",
+              color: "#FFFFFF",
             },
           },
         },
@@ -146,7 +147,20 @@ export default {
   margin-top: 2rem;
   margin-bottom: 3rem;
 }
-.chart_fix{
-  width: 50%;
+@media only screen and (min-width: 600px){
+  .chart_fix{
+      width: 70%;
+  }
+  .chart_fix2{
+    width: 50%
+  }
+}
+@media only screen and (min-width: 1000px){
+  .chart_fix{
+      width: 50%;
+  }
+  .chart_fix2{
+    width: 30%
+  }
 }
 </style>
