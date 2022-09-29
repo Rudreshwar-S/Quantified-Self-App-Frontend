@@ -36,8 +36,8 @@
               />
             </div>
             <div>
-              <h3 class="mb-1">{{ slotProps.data.name }}</h3>
-              <div class="car-buttons mt-5">
+              <h2 class="mb-1">{{ slotProps.data.name }}</h2>
+              <div class="card-buttons mt-5">
                 <Button
                   icon="pi pi-pencil"
                   class="p-button-success p-button-rounded mr-2"
@@ -150,6 +150,20 @@ export default {
 <style lang="scss" scoped>
 .text-pos {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
+}
+.Tracker-item {
+  .Tracker-item-content {
+    border: 3px solid var(--surface-border);
+    border-radius: 20px;
+    margin: 0.7rem;
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  .Tracker-image {
+    width: 40%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
 }
 </style>

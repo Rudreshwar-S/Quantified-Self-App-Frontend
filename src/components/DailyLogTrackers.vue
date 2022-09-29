@@ -22,14 +22,14 @@
           <h2 class="text-pos">Daily Logs</h2>
         </template>
         <template #item="slotProps">
-          <div class="product-item">
-            <div class="product-item-content">
+          <div class="card-item">
+            <div class="card-item-content">
               <div class="mb-3">
                 <img
                   src="../assets/QuantifieldSelfAppLogo.svg"
                   style="width: 8rem"
                   :alt="slotProps.data.name"
-                  class="product-image"
+                  class="card-image"
                 />
               </div>
               <div>
@@ -118,8 +118,21 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="scss" scoped>
 .text-pos {
   text-align: center;
+}
+.card-item {
+  .card-item-content {
+    border: 3px solid var(--surface-border);
+    border-radius: 20px;
+    margin: 0.7rem;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .card-image {
+    width: 40%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
 }
 </style>
