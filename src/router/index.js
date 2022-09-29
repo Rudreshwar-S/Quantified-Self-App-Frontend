@@ -3,7 +3,7 @@ import Home from "../views/Home.vue";
 import Dashboard from "../views/Dashboard.vue";
 import About from "../views/About.vue";
 import Login from "../views/Login.vue";
-import Registration from "../views/SignUp.vue";
+import Registration from "../views/Registration.vue";
 import TrackerLog from "../views/TrackerLog.vue";
 
 const routes = [

@@ -3,7 +3,6 @@
     <div class="card">
       <Card style="width: 17rem">
         <template #title>
-          <!-- <Setting class="setting-loc" :radius="100" direction="down-left" type="quarter-circle" showIcon="pi pi-cog "/> -->
           Tracker Details
         </template>
         <template #content>

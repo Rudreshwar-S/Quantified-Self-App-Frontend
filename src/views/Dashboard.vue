@@ -1,13 +1,11 @@
 <script>
-import Navbar from "../components/Navbar.vue";
-import Registration from "../components/Registration.vue";
-import TrackerContainer from "../components/TrackerContainer.vue";
+import NavbarTracker from "../components/NavbarTracker.vue";
+import ContainTracker from "../components/ContainTracker.vue";
 export default {
   name: "App",
   components: {
-    Navbar,
-    Registration,
-    TrackerContainer,
+    NavbarTracker,
+    ContainTracker,
   },
   data() {
     return {};
@@ -17,13 +15,13 @@ export default {
 
 <template>
   <div class="backdrop">
-    <Navbar />
-    <TrackerContainer class="container" />
+    <NavbarTracker />
+    <ContainTracker class="container" />
   </div>
 </template>
 
 <style scoped>
-.Navbar {
+.NavbarTracker {
   background-color: rgb(220, 228, 234);
 }
 .container {

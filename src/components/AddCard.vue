@@ -3,13 +3,11 @@
     <div class="card">
       <Card style="width: 17rem">
         <template #title>
-          <!-- <Setting class="setting-loc" :radius="100" direction="down-left" type="quarter-circle" showIcon="pi pi-cog "/> -->
-          <!-- Card Details -->
-          {{ track_type }}
-          {{ tracker_obj.tracker_type }}
+          Card Details
         </template>
         <template #content>
           <h3>Tracker ID: {{ this.$route.params.id }}</h3>
+          <h5>{{ tracker_obj.tracker_type }}</h5>
           <div style="margin-bottom: 0.8em">
             <InputNumber
               placeholder="Value"

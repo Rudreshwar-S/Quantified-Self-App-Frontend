@@ -49,11 +49,4 @@ export default {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* .btn2{
-        color: skyblue;
-    } */
-/* .btn2{
-        position: absolute;
-        top: 80%;
-    } */
 </style>

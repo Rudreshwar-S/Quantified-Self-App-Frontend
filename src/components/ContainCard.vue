@@ -14,7 +14,7 @@
       <Carousel
         :value="cards"
         :numVisible="3"
-        :numScroll="2"
+        :numScroll="1"
         :responsiveOptions="responsiveOptions"
         :circular="true"
       >

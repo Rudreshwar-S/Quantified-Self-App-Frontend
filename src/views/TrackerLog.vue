@@ -1,5 +1,5 @@
 <template>
-  <Navbar2></Navbar2>
+  <NavbarCard></NavbarCard>
   <div class="export-btn">
     <Button label="Graph" icon="pi pi-chart-line" @click="toggleChart" />
   </div>
@@ -9,18 +9,19 @@
     :options="lineOptions"
     v-if="displayLine"
   />
-  <Chart type="pie" :data="pieData" :options="pieOptions" v-if="displayPie" />
-  <DailyLogTrackers :cards="cards"></DailyLogTrackers>
+  <div >
+    <Chart type="pie" :data="pieData" :options="pieOptions" v-if="displayPie" class="chart_fix"/>
+  </div>
+  <ContainCard :cards="cards"></ContainCard>
 </template>
 <script>
-import AddCard from "../components/AddCard.vue";
-import DailyLogTrackers from "../components/DailyLogTrackers.vue";
-import Navbar2 from "../components/Navbar2.vue";
+import ContainCard from "../components/ContainCard.vue";
+import NavbarCard from "../components/NavbarCard.vue";
 export default {
   name: "App",
   components: {
-    DailyLogTrackers,
-    Navbar2,
+    ContainCard,
+    NavbarCard,
   },
   data() {
     return {
@@ -144,5 +145,8 @@ export default {
 .export-btn {
   margin-top: 2rem;
   margin-bottom: 3rem;
+}
+.chart_fix{
+  width: 50%;
 }
 </style>
