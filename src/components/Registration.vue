@@ -8,7 +8,7 @@
     >
       <div class="flex align-items-center flex-column pt-6 px-3">
         <h5>Registration Failed!</h5>
-        <h5>Error: {{errorMessage}}</h5>
+        <h5>Error: {{ errorMessage }}</h5>
       </div>
     </Dialog>
 
@@ -118,11 +118,12 @@
             <label
               for="accept"
               :class="{ 'p-error': v$.accept.$invalid && submitted }"
-              > I agree to the terms and conditions*</label
+            >
+              I agree to the terms and conditions*</label
             >
           </div>
           <div class="padd">
-              <Button type="submit" label="Submit"/>
+            <Button type="submit" label="Submit" />
           </div>
         </form>
       </div>
@@ -143,7 +144,7 @@ export default {
       accept: null,
       submitted: false,
       showMessage: false,
-      errorMessage:""
+      errorMessage: "",
     };
   },
   validations() {
@@ -175,29 +176,27 @@ export default {
         name: this.name,
         email: this.email,
         password: this.password,
-      }
+      };
 
       fetch("http://localhost:5000/auth/register", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }, 
-        body: JSON.stringify(data)
-      })
-      .then(async res => {
-        let data = await res.json()
-        if(!res.ok){
-          console.log(data)
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(data),
+      }).then(async (res) => {
+        let data = await res.json();
+        if (!res.ok) {
+          console.log(data);
           this.errorMessage = (data && data.message) || res.status;
-          this.toggleDialog()
-          // return Promise.reject(error);
-        }else{
-          this.$router.push('/dashboard');
-          let jwt = data.jwt
-          localStorage.setItem('Auth', jwt)
+          this.toggleDialog();
+        } else {
+          this.$router.push("/dashboard");
+          let jwt = data.jwt;
+          localStorage.setItem("Auth", jwt);
         }
-      })
+      });
     },
     toggleDialog() {
       this.showMessage = !this.showMessage;
@@ -217,11 +216,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .registration_div{
-    display: flex;
-    justify-content: center;
-    margin-top: 8rem;
-  }
+.registration_div {
+  display: flex;
+  justify-content: center;
+  margin-top: 8rem;
+}
 .form-demo {
   .card {
     min-width: 200px;
@@ -237,7 +236,7 @@ export default {
   .card {
     width: 30%;
   }
-  .padd{
+  .padd {
     padding-top: 10%;
   }
 }

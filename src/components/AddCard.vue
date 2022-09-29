@@ -11,34 +11,29 @@
         <template #content>
           <h3>Tracker ID: {{ this.$route.params.id }}</h3>
           <div style="margin-bottom: 0.8em">
-              <InputNumber
-                placeholder="Value"
-                v-model="cardValue"
-                v-if="track_type == 1"
-                :minFractionDigits="0"
-                :maxFractionDigits="5"
-              ></InputNumber>
-              <Dropdown
-                v-model="cardValue"
-                v-if="track_type == 2"
-                :options="bool_val"
-                placeholder="Yes/No"
-              >
-              </Dropdown>
-              <InputText
-                v-model="cardValue"
-                v-if="track_type == 3"
-                placeholder="Value"
-              ></InputText>
+            <InputNumber
+              placeholder="Value"
+              v-model="cardValue"
+              v-if="track_type == 1"
+              :minFractionDigits="0"
+              :maxFractionDigits="5"
+            ></InputNumber>
+            <Dropdown
+              v-model="cardValue"
+              v-if="track_type == 2"
+              :options="bool_val"
+              placeholder="Yes/No"
+            >
+            </Dropdown>
+            <InputText
+              v-model="cardValue"
+              v-if="track_type == 3"
+              placeholder="Value"
+            ></InputText>
           </div>
-          <Textarea
-            placeholder="Note"
-            v-model="note"
-            rows="4"
-            cols="22"
+          <Textarea placeholder="Note" v-model="note" rows="4" cols="22"
             >x``</Textarea
           >
-
         </template>
         <template #footer>
           <Button

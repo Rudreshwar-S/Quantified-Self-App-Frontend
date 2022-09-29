@@ -5,24 +5,24 @@
     </template>
   </Menubar>
   <div class="text-centerr">
-    <AddTracker v-if="displayTracker"></AddTracker>
+    <AddCard v-if="displayCard"></AddCard>
   </div>
 </template>
 <script>
-import AddTracker from "./AddTracker.vue";
+import AddCard from "./AddCard.vue";
 export default {
   components: {
-    AddTracker,
+    AddCard,
   },
   data() {
     return {
-      displayTracker: false,
+      displayCard: false,
       items: [
         {
-          label: "Tracker",
+          label: "Daily Logs",
           items: [
             {
-              label: "Add Tracker",
+              label: "New",
               icon: "pi pi-fw pi-plus",
               command: () => {
                 this.toggleFile();
@@ -41,23 +41,13 @@ export default {
           label: "Dashboard",
           to: "/dashboard",
         },
-        {
-          label: "About",
-          to: "/about",
-        },
-        {
-          label: "Logout",
-          command: () => {
-            this.handleLogout();
-          },
-        },
       ],
     };
   },
 
   methods: {
     toggleFile: function () {
-      this.displayTracker = !this.displayTracker;
+      this.displayCard = !this.displayCard;
     },
     handleLogout: function () {
       localStorage.removeItem("Auth");

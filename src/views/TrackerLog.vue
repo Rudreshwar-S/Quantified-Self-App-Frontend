@@ -1,9 +1,7 @@
 <template>
-  <div class="add-btn">
-    <Button label="Add Log" icon="pi pi-download" @click="toggleFile" />
-  </div>
+  <Navbar2></Navbar2>
   <div class="export-btn">
-    <Button label="Graph" icon="pi pi-download" @click="toggleChart" />
+    <Button label="Graph" icon="pi pi-chart-line" @click="toggleChart" />
   </div>
   <Chart
     type="line"
@@ -11,19 +9,18 @@
     :options="lineOptions"
     v-if="displayLine"
   />
-  <Chart type="pie" :data="pieData" :options="pieOptions" v-if="displayPie"/>
-
-  <AddCard v-if="displayCard" tracker=""></AddCard>
-  <DailyLogTrackers :cards="cards" ></DailyLogTrackers>
+  <Chart type="pie" :data="pieData" :options="pieOptions" v-if="displayPie" />
+  <DailyLogTrackers :cards="cards"></DailyLogTrackers>
 </template>
 <script>
 import AddCard from "../components/AddCard.vue";
 import DailyLogTrackers from "../components/DailyLogTrackers.vue";
+import Navbar2 from "../components/Navbar2.vue";
 export default {
   name: "App",
   components: {
     DailyLogTrackers,
-    AddCard,
+    Navbar2,
   },
   data() {
     return {
@@ -37,7 +34,7 @@ export default {
         labels: [],
         datasets: [
           {
-            label: "Tracker ID: ",
+            label: "Value",
             backgroundColor: "#42A5F5",
             borderColor: "#42A5F5",
             data: [],
@@ -98,9 +95,12 @@ export default {
       this.displayCard = !this.displayCard;
     },
     toggleChart() {
-      if(this.pieData.datasets[0].data[0]>0 || this.pieData.datasets[0].data[0]>0){
+      if (
+        this.pieData.datasets[0].data[0] > 0 ||
+        this.pieData.datasets[0].data[0] > 0
+      ) {
         this.displayPie = !this.displayPie;
-      }else if(typeof(this.pieData.datasets[0].data[0])=="number"){
+      } else if (typeof this.pieData.datasets[0].data[0] == "number") {
         this.displayLine = !this.displayLine;
       }
     },
@@ -141,10 +141,8 @@ export default {
 };
 </script>
 <style>
-.add-btn {
-  margin-top: 1rem;
-}
 .export-btn {
   margin-top: 2rem;
+  margin-bottom: 3rem;
 }
 </style>

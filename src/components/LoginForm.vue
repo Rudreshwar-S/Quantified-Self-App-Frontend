@@ -8,7 +8,7 @@
     >
       <div class="flex align-items-center flex-column pt-6 px-3">
         <h5>Login Failed!</h5>
-        <h5>Error: {{errorMessage}}</h5>
+        <h5>Error: {{ errorMessage }}</h5>
       </div>
     </Dialog>
     <div class="login_div">
@@ -62,15 +62,15 @@
                 >Password*</label
               >
               <small
-              v-if="
-                (v$.password.$invalid && submitted) ||
-                v$.password.$pending.$response
-              "
-              class="p-error"
-              >{{
-                v$.password.required.$message.replace("Value", "Password")
-              }}</small
-            >
+                v-if="
+                  (v$.password.$invalid && submitted) ||
+                  v$.password.$pending.$response
+                "
+                class="p-error"
+                >{{
+                  v$.password.required.$message.replace("Value", "Password")
+                }}</small
+              >
             </div>
           </div>
           <div class="padd">
@@ -94,7 +94,7 @@ export default {
       accept: null,
       submitted: false,
       showMessage: false,
-      errorMessage:""
+      errorMessage: "",
     };
   },
   validations() {
@@ -105,12 +105,12 @@ export default {
       },
       password: {
         required,
-      }
+      },
     };
   },
   methods: {
     handleSubmit(isFormValid) {
-      console.log(isFormValid, this.submitted)
+      console.log(isFormValid, this.submitted);
       this.submitted = true;
 
       if (!isFormValid) {
@@ -120,30 +120,28 @@ export default {
       let data = {
         email: this.email,
         password: this.password,
-      }
+      };
 
       fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }, 
-        body: JSON.stringify(data)
-      })
-      .then(async res => {
-        let data = await res.json()
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(data),
+      }).then(async (res) => {
+        let data = await res.json();
 
-        if(!res.ok){
-          console.log(data)
+        if (!res.ok) {
+          console.log(data);
           this.errorMessage = (data && data.message) || res.status;
-          this.toggleDialog()
-        }else{
-          let jwt = data.jwt
-          localStorage.setItem('Auth', jwt)
-          this.$router.push('/dashboard')
+          this.toggleDialog();
+        } else {
+          let jwt = data.jwt;
+          localStorage.setItem("Auth", jwt);
+          this.$router.push("/dashboard");
         }
-      })
-
+      });
     },
     toggleDialog() {
       this.showMessage = !this.showMessage;
@@ -162,11 +160,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .login_div{
-    display: flex;
-    justify-content: center;
-    margin-top: 10rem;
-  }
+.login_div {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
 .form-demo {
   .card {
     min-width: 200px;

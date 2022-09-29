@@ -2,10 +2,6 @@
   <div class="parent_div" v-if="displayDiv">
     <div class="card">
       <Card style="width: 17rem">
-        <template #title>
-          <!-- <Setting class="setting-loc" :radius="100" direction="down-left" type="quarter-circle" showIcon="pi pi-cog "/> -->
-          Tracker Details
-        </template>
         <template #content>
           <InputText
             placeholder="Name"
@@ -20,13 +16,12 @@
             cols="22"
             >x``</Textarea
           >
-          <Dropdown style="margin-bottom: 0.8em" v-model="trackerType" />
         </template>
         <template #footer>
           <Button
             icon="pi pi-check"
             type="submit"
-            label="Save"
+            label="Update"
             @click="onSubmit"
           />
           <Button
@@ -44,15 +39,14 @@
 <script>
 import Dropdown from "./Dropdown.vue";
 export default {
+  props: ["tracker_id"],
   components: {
     Dropdown,
   },
   data() {
     return {
-      trackerId: "",
       trackerName: "",
       description: "",
-      trackerType: null,
       isValidTracker: false,
       displayDiv: true,
     };
@@ -62,14 +56,14 @@ export default {
       let data = {
         name: this.trackerName,
         description: this.description,
-        tracker_type: this.trackerType.name,
       };
-      if (!this.description || !this.trackerName || this.trackerType == null) {
+      console.log("Okkkkk", this.tracker_id);
+      if (!this.description || !this.trackerName) {
         alert("All fields required!");
       } else {
         var authToken = localStorage.getItem("Auth");
-        fetch("http://localhost:5000/trackers", {
-          method: "POST",
+        fetch("http://localhost:5000/trackers/" + this.tracker_id, {
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
@@ -78,6 +72,7 @@ export default {
           body: JSON.stringify(data),
         });
       }
+      this.displayDiv = false;
       this.displayDiv = false;
       window.setTimeout(function () {
         location.reload();

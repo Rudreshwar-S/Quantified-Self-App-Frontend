@@ -10,8 +10,7 @@ export default {
     TrackerContainer,
   },
   data() {
-    return {
-    };
+    return {};
   },
 };
 </script>
@@ -19,7 +18,7 @@ export default {
 <template>
   <div class="backdrop">
     <Navbar />
-    <TrackerContainer class="container"/>
+    <TrackerContainer class="container" />
   </div>
 </template>
 
@@ -27,7 +26,7 @@ export default {
 .Navbar {
   background-color: rgb(220, 228, 234);
 }
-.container{
+.container {
   margin-top: 5rem;
 }
 </style>
