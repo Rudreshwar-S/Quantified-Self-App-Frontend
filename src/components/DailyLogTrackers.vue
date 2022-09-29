@@ -26,7 +26,7 @@
             <div class="product-item-content">
               <div class="mb-3">
                 <img
-                  src="../assets/QuantifieldSelfAppLogo"
+                  src="../assets/QuantifieldSelfAppLogo.svg"
                   style="width: 8rem"
                   :alt="slotProps.data.name"
                   class="product-image"
